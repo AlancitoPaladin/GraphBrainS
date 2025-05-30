@@ -1,0 +1,29 @@
+# Entornos virtuales
+.venv/
+env/
+ENV/
+
+# Archivos de Python innecesarios
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Config de IDEs
+.idea/
+.vscode/
+
+# Archivos ocultos de entorno
+.env
+*.env
+
+# Caché
+.cache/
+
+# Datasets pesados
+.images1/1/Training/
+.images1/1/Testing/
