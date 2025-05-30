@@ -1,0 +1,7 @@
+Archivo: Tr-glTr_0002.jpg
+Dimensiones: (240, 320, 3)
+Coverage Rate: 43.96%
+Uniformity Rate: 30.20%
+Grid Size: 80
+Píxeles segmentados: 33762
+Píxeles totales: 76800
