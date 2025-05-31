@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
+from features import analyze_tumor_from_results
 from imgseg import Imgseg
 
 # ===========================================
@@ -29,7 +30,7 @@ for file in os.listdir(training_path):
 
 # Ordenar y tomar solo las primeras 5
 image_files.sort()
-image_files = image_files[:5]
+image_files = image_files = image_files[:5]
 
 print(f"Procesando las primeras 5 imágenes de {training_path}")
 print(f"Imágenes encontradas: {len(image_files)}")
@@ -39,6 +40,8 @@ print(f"Resultados se guardarán en: {results_path}")
 # PROCESAMIENTO Y GUARDADO DE RESULTADOS
 # ===========================================
 results = []
+clinical_analyses = []
+
 for i, filename in enumerate(image_files, 1):
     img_path = os.path.join(training_path, filename)
 
@@ -72,6 +75,23 @@ for i, filename in enumerate(image_files, 1):
         print(f"Archivo: {filename}")
         print(f"Coverage: {c_rate:.2f}%")
         print(f"Uniformity: {u_rate:.2f}%")
+
+        # ===========================================
+        # ANÁLISIS CLÍNICO AVANZADO
+        # ===========================================
+        base_name = os.path.splitext(filename)[0]
+
+        clinical_analysis = analyze_tumor_from_results(
+            u_segmentation=u,
+            coverage_rate=c_rate,
+            uniformity_rate=u_rate,
+            otsu_result=otsu_result,
+            brain_cavity=brain_cavity,
+            img_original=img_array,
+            output_dir=results_path,
+            base_name=base_name,
+            grid_size=grid_size
+        )
 
         # ===========================================
         # GUARDAR RESULTADOS EN ARCHIVOS
@@ -143,6 +163,8 @@ for i, filename in enumerate(image_files, 1):
             'uniformity': u_rate,
             'result': result
         })
+
+        clinical_analyses.append(clinical_analysis)
 
     except Exception as e:
         print(f"Error procesando {filename}: {str(e)}")

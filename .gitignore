@@ -25,5 +25,5 @@ Thumbs.db
 .cache/
 
 # Datasets pesados
-.images1/1/Training/
-.images1/1/Testing/
+images1/1/Training/
+images1/1/Testing/

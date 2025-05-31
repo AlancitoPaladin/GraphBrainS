@@ -282,7 +282,7 @@ def enhance_low_contrast_image(image):
 def adaptive_skull_detection(gray_image):
     """Detección adaptativa del cráneo para imágenes con diferentes contrastes"""
     # Análisis del histograma para determinar estrategia
-    hist = cv2.calcHist([gray_image], [0], None, [256], [0, 256])
+    cv2.calcHist([gray_image], [0], None, [256], [0, 256])
     mean_intensity = np.mean(gray_image)
     std_intensity = np.std(gray_image)
 

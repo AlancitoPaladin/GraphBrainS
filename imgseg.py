@@ -1,7 +1,7 @@
 from utils import test_MorphACWE, coverage_rate, uniformity_rate
 
 
-class Imgseg():
+class Imgseg:
     def __init__(self, img_path, grid_size):
         self.img_path = img_path
         self.grid_size = grid_size
