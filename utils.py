@@ -458,10 +458,10 @@ def draw_contours(u, imgcolor):
             img_contours = imgcolor.copy()
             if img_contours.max() <= 1.0:
                 img_contours = (img_contours * 255).astype(np.uint8)
-            img_contours = cv2.drawContours(img_contours, contours, -1, (255, 0, 0), 2)
+            img_contours = cv2.drawContours(img_contours, contours, -1, (255, 0, 0), 1)
         else:
             img_contours = cv2.cvtColor((imgcolor * 255).astype(np.uint8), cv2.COLOR_GRAY2BGR)
-            img_contours = cv2.drawContours(img_contours, contours, -1, (255, 0, 0), 2)
+            img_contours = cv2.drawContours(img_contours, contours, -1, (255, 0, 0), 1)
 
         return img_contours
 
